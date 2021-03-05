@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+        <style>
+            *{margin: 0; padding: 0;}
+            .main{
+                font-family: 'Roboto', sans-serif;
+                height: 100vh;
+                font-size: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #inp{
+                box-sizing: border-box;
+                width: 100%;
+                height: 100px;
+                border: none;
+                outline: none;
+                font-size: 24px;
+                font-weight: bold;
+                background-color: red;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                text-align: right;
+                padding: 10px;
+            }
+            .calc{
+                display: flex;
+                flex-direction: column;
+                box-shadow: 0 0 10px black;
+                border-radius: 10px;
+            }
+            .calc_row{
+                display: flex;
+                justify-content: space-around;
+                padding: 5px;
+            }
+            .calc_num, #calc_equals{
+                font-weight: bold;
+                font-size: 24px;
+                width: 50px;
+                line-height: 50px;
+                text-align: center;
+                border-radius: 50%;
+                color: #696969;
+                margin: 10px;
+                transition: 0.5s;
+                /* background: #d6d6d6; */
+            }
+            .calc_num:hover, #calc_equals:hover{
+                background: red;
+                color: white;
+            }
+        </style>
+        <script>
+            function init(){
+                let nums = document.getElementsByClassName('calc_num');
+                let inp = document.getElementById('inp');
+                let equals = document.getElementById('calc_equals');
+                for(let i = 0; i != nums.length; i++){
+                    nums[i].addEventListener('click', function(){
+                        inp.value += nums[i].innerText;
+                    });
+                }
+                equals.addEventListener('click', function(){
+                    inp.value = eval(inp.value);
+                });
+            }
+            window.onload = init;
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="calc">
+                <div class="calc_inp">
+                    <input type="text" id="inp" value="">
+                </div>
+                <div class="calc_row">
+                    <div class="calc_num">7</div>
+                    <div class="calc_num">8</div>
+                    <div class="calc_num">9</div>
+                    <div class="calc_num">+</div>
+                </div>
+                <div class="calc_row">
+                    <div class="calc_num">4</div>
+                    <div class="calc_num">5</div>
+                    <div class="calc_num">6</div>
+                    <div class="calc_num">-</div>
+                </div>
+                <div class="calc_row">
+                    <div class="calc_num">1</div>
+                    <div class="calc_num">2</div>
+                    <div class="calc_num">3</div>
+                    <div class="calc_num">*</div>
+                </div>
+                <div class="calc_row">
+                    <div class="calc_num">0</div>
+                    <div class="calc_num">.</div>
+                    <div class="calc_num">/</div>
+                    <div id="calc_equals">=</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
